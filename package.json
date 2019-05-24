@@ -2,12 +2,13 @@
   "name": "test-lib",
   "version": "0.0.1",
   "description": "test lib",
-  "main": "index.js",
+  "main": "bundle/index.js",
+  "module": "bundle/index.module.js",
   "scripts": {
     "dev": "rollup -c rollup.config.dev.js",
     "watch": "rollup -c rollup.config.dev.js -w",
     "example:watch": "webpack-dev-server --config ./build/webpack.config.js",
-    "webpack:build": "webpack --config ./build/webpack.config.js"
+    "example:build": "webpack --config ./build/webpack.config.js"
   },
   "author": "suzh 362680581@qq.com",
   "license": "ISC",
@@ -16,7 +17,11 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "html-webpack-plugin": "^3.2.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^5.0.0",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"

@@ -1,3 +1,1 @@
-/**
- * output component
- */
+export { default as foo } from './foo';

@@ -14,6 +14,13 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(rootDir, './dist/')
     },
+    resolve: {
+        extensions: [ '.js', '.ts', '.jsx', '.tsx', '.json' ],
+        alias: {
+            'test-lib': path.resolve(rootDir, './lib/bundle')
+        },
+        
+    },
     devServer: {
         contentBase: './example',
         publicPath: '/',

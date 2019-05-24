@@ -1,1 +1,3 @@
-console.log('124');
+import { foo } from 'test-lib';
+console.log(foo);
+alert(foo)
