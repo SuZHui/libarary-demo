@@ -1,6 +1,8 @@
 .button {
-    display: flex;
-    padding: 4px 12px;
-    border-radius: 8px;
+    display: inline-block;
+    margin: 4px 6px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 4px;
     border-color: transparent;
 }
