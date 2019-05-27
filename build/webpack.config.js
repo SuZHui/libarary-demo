@@ -19,7 +19,17 @@ module.exports = {
         alias: {
             'test-lib': path.resolve(rootDir, './lib/bundle')
         },
-        
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            }
+        ]
     },
     devServer: {
         contentBase: './example',
