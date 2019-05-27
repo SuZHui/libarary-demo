@@ -29,7 +29,8 @@ export default [
                 format: 'iife',
                 sourcemap: true, 
                 globals: {
-                    'react': 'React'
+                    'react': 'React',
+                    'rxjs': 'rxjs'
                 }
             }
         ],
