@@ -2,6 +2,8 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
 
+import autoprefixer from 'autoprefixer';
+
 export default {
     input: 'src/index.js',
     output: {
@@ -15,7 +17,8 @@ export default {
         postcss({
             modules: true,
             minimize: true,
-            extensions: [ '.css', '.scss' ]
+            extensions: [ '.css', '.scss' ],
+            plugins: [ autoprefixer ]
         }),
         resolve(),
         babel({
