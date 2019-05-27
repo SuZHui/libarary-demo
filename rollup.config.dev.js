@@ -5,25 +5,43 @@ import { terser } from "rollup-plugin-terser";
 
 import autoprefixer from 'autoprefixer';
 
-export default {
-    input: 'src/index.js',
-    output: {
-        file: './lib/bundle.js',
-        format: 'cjs',
-        sourcemap: true, 
-    },
-    plugins: [
-        postcss({
-            modules: true,
-            minimize: true,
-            extensions: [ '.css', '.scss' ],
-            plugins: [ autoprefixer ]
-        }),
-        resolve(),
-        babel({
-            exclude: 'node_modules/**'
-        }),
-        terser()
-    ],
-    external: [ 'react', 'react-dom' ]
-};
+export default [
+    {
+        input: 'src/index.js',
+        output: [
+            // 输出es模块
+            {
+                file: './lib/esm/index.js',
+                format: 'esm',
+                sourcemap: true,
+            },
+            // 输出commonjs模块
+            {
+                file: './lib/cjs/index.js',
+                format: 'cjs',
+                sourcemap: true, 
+            },
+            // 输出脚本可以引用的模块
+            {
+                file: './lib/iife/index.js',
+                name: 'libTest',
+                format: 'iife',
+                sourcemap: true, 
+            }
+        ],
+        plugins: [
+            postcss({
+                modules: true,
+                minimize: true,
+                extensions: [ '.css', '.scss' ],
+                plugins: [ autoprefixer ]
+            }),
+            resolve(),
+            babel({
+                exclude: 'node_modules/**'
+            }),
+            terser()
+        ],
+        external: [ 'react', 'react-dom' ]
+    }
+];

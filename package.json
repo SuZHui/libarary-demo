@@ -2,8 +2,8 @@
   "name": "test-lib",
   "version": "0.0.1",
   "description": "test lib",
-  "main": "bundle/index.js",
-  "module": "bundle/index.module.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
   "scripts": {
     "dev": "rollup -c rollup.config.dev.js",
     "watch": "rollup -c rollup.config.dev.js -w",
