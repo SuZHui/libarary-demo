@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "start rollup --watch",
+            "type": "shell",
+            "command": "npm run watch"
+        },
+        {
+            "label": "start webpack --watch",
+            "type": "shell",
+            "command": "npm run example:watch"
+        },
+        {
+            "label": "start",
+            "dependsOn": ["start webpack --watch", "start rollup --watch"]
+        }
+    ]
+}
