@@ -34,20 +34,27 @@ export default [
             }
         ],
         plugins: [
+            commonjs({
+                include: ['node_modules/rxjs/**']
+            }),
             postcss({
                 modules: true,
                 minimize: true,
                 extensions: [ '.css', '.scss' ],
                 plugins: [ autoprefixer ]
             }),
+            resolve({
+                module: true,
+                preferBuiltins: true,
+                extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ],
+                customResolveOptions: {
+                    moduleDirectory: 'node_modules'
+                }
+            }),
             babel({
                 exclude: 'node_modules/**',
                 extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ]
             }),
-            resolve({
-                extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ]
-            }),
-            commonjs(),
             terser()
         ],
         external: [ 'react', 'react-dom' ]
