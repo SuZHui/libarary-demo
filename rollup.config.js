@@ -2,12 +2,13 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from "rollup-plugin-terser";
+import commonjs from 'rollup-plugin-commonjs'
 
 import autoprefixer from 'autoprefixer';
 
 export default [
     {
-        input: 'src/index.js',
+        input: 'src/index.ts',
         output: [
             // 输出es模块
             {
@@ -27,6 +28,9 @@ export default [
                 name: 'libTest',
                 format: 'iife',
                 sourcemap: true, 
+                globals: {
+                    'react': 'React'
+                }
             }
         ],
         plugins: [
@@ -36,10 +40,14 @@ export default [
                 extensions: [ '.css', '.scss' ],
                 plugins: [ autoprefixer ]
             }),
-            resolve(),
             babel({
-                exclude: 'node_modules/**'
+                exclude: 'node_modules/**',
+                extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ]
             }),
+            resolve({
+                extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ]
+            }),
+            commonjs(),
             terser()
         ],
         external: [ 'react', 'react-dom' ]
