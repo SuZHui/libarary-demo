@@ -5,8 +5,8 @@
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "scripts": {
-    "dev": "rollup -c rollup.config.dev.js",
-    "watch": "rollup -c rollup.config.dev.js -w",
+    "dev": "rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js -w",
     "example:watch": "webpack-dev-server --config ./build/webpack.config.js",
     "example:build": "webpack --config ./build/webpack.config.js",
     "start": "start npm run watch && npm run example:watch"

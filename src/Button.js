@@ -4,6 +4,7 @@ export class Button extends React.Component {
     render() {
         return (
         <button 
+            role="button"
             className={style.button} 
             type="button"
         >
