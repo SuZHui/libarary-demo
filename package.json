@@ -11,7 +11,7 @@
     "example:build": "webpack --config ./build/webpack.config.js",
     "start": "start npm run watch && npm run example:watch"
   },
-  "author": "suzh 362680581@qq.com",
+  "author": "suzh <362680581@qq.com>",
   "license": "ISC",
   "dependencies": {
     "react": "^16.8.6",
