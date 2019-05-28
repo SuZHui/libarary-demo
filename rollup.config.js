@@ -30,13 +30,15 @@ export default [
                 sourcemap: true, 
                 globals: {
                     'react': 'React',
-                    'rxjs': 'rxjs'
                 }
             }
         ],
         plugins: [
             commonjs({
-                include: ['node_modules/rxjs/**']
+                include: ['./node_modules/**'],
+                namedExports: {
+                    'node_modules/rxjs/Subject.js': [ 'Subject' ]
+                }
             }),
             postcss({
                 modules: true,
@@ -45,7 +47,7 @@ export default [
                 plugins: [ autoprefixer ]
             }),
             resolve({
-                module: true,
+                mainFields: [ 'module', 'main' ],
                 preferBuiltins: true,
                 extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ],
                 customResolveOptions: {
@@ -56,7 +58,7 @@ export default [
                 exclude: 'node_modules/**',
                 extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ]
             }),
-            terser()
+            // terser()
         ],
         external: [ 'react', 'react-dom' ]
     }

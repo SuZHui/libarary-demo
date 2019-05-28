@@ -1,0 +1,11 @@
+.virtual-list {
+    overflow-y: auto;
+    .virtual-list_container {
+        position: relative;
+    }
+    .virtual-list_placeholder {
+        width: 100%;
+        position: absolute;
+        will-change: top;
+    }
+}
