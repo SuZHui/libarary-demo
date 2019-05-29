@@ -17,7 +17,7 @@ module.exports = {
     resolve: {
         extensions: [ '.js', '.ts', '.jsx', '.tsx', '.json' ],
         alias: {
-            'test-lib': path.resolve(rootDir, './lib/esm/index')
+            'test-lib': path.resolve(rootDir, './lib/index.esm.js')
         },
     },
     module: {

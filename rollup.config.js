@@ -13,19 +13,19 @@ export default [
         output: [
             // 输出es模块
             {
-                file: './lib/esm/index.js',
+                file: './lib/index.esm.js',
                 format: 'esm',
                 sourcemap: true,
             },
             // 输出commonjs模块
             {
-                file: './lib/cjs/index.js',
+                file: './lib/index.cjs.js',
                 format: 'cjs',
                 sourcemap: true,
             },
             // 输出脚本可以引用的模块
             {
-                file: './lib/iife/index.js',
+                file: './lib/index.iife.js',
                 name: 'libTest',
                 format: 'iife',
                 sourcemap: true,
@@ -37,9 +37,9 @@ export default [
         plugins: [
             commonjs({
                 include: ['./node_modules/**'],
-                namedExports: {
-                    'node_modules/rxjs/Subject.js': [ 'Subject' ]
-                }
+                // namedExports: {
+                //     'node_modules/rxjs/Subject.js': [ 'Subject' ]
+                // }
             }),
             postcss({
                 modules: true,
@@ -56,7 +56,7 @@ export default [
                 }
             }),
             typescript({
-              useTsconfigDeclarationDir:false
+              useTsconfigDeclarationDir: false
             }),
             // babel({
             //     exclude: 'node_modules/**',
