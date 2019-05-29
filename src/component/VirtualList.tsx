@@ -7,7 +7,7 @@ import style from "./VirtualList.scss";
  * 组件配置
  */
 export interface IVirtualListOptions {
-  // height of item, required 
+  // height of item, required
   height: number;
   spare?: number;
   sticky?: boolean;
@@ -95,8 +95,8 @@ export class VirtualList<T> extends React.Component<
             return opt;
           })
         ).subscribe(opt => this.options$.next(opt))
-    );  
-    
+    );
+
     // window resize event
     this.subs.add(
       fromEvent(window, 'resize')
@@ -204,7 +204,7 @@ export class VirtualList<T> extends React.Component<
             item.$pos = newIndex * height;
             item.$index = newIndex++;
           });
-  
+
           return (this.stateDataSnapshot = dataSlice);
         })
       );
@@ -229,7 +229,7 @@ export class VirtualList<T> extends React.Component<
   render() {
     return (
       // wrapper
-      <div 
+      <div
         className={style['virtual-list']}
         ref={this.virtualListRef}
         style={this.props.style}
@@ -239,7 +239,7 @@ export class VirtualList<T> extends React.Component<
           className={style['virtual-list_container']}
         >
           {this.state.data.map((data, i) => (
-            <div 
+            <div
               key={i}
               className={style['virtual-list_placeholder']}
               style={{ top: data.$pos + 'px' }}

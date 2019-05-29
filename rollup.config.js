@@ -1,8 +1,9 @@
-import babel from 'rollup-plugin-babel';
+// import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from "rollup-plugin-terser";
 import commonjs from 'rollup-plugin-commonjs'
+import typescript from 'rollup-plugin-typescript2';
 
 import autoprefixer from 'autoprefixer';
 
@@ -20,14 +21,14 @@ export default [
             {
                 file: './lib/cjs/index.js',
                 format: 'cjs',
-                sourcemap: true, 
+                sourcemap: true,
             },
             // 输出脚本可以引用的模块
             {
                 file: './lib/iife/index.js',
                 name: 'libTest',
                 format: 'iife',
-                sourcemap: true, 
+                sourcemap: true,
                 globals: {
                     'react': 'React',
                 }
@@ -54,11 +55,14 @@ export default [
                     moduleDirectory: 'node_modules'
                 }
             }),
-            babel({
-                exclude: 'node_modules/**',
-                extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ]
+            typescript({
+              useTsconfigDeclarationDir:false
             }),
-            // terser()
+            // babel({
+            //     exclude: 'node_modules/**',
+            //     extensions: [ '.mjs', '.ts', '.tsx', '.json', '.js', '.jsx' ]
+            // }),
+            terser()
         ],
         external: [ 'react', 'react-dom' ]
     }
